@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance System</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #dfe9f3, #ffffff);
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 300px;
+            margin: 80px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        input {
+            width: 90%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: darkblue;
+        }
+
+        #result {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Student Attendance</h2>
+
+    <input type="text" id="name" placeholder="Enter Name"><br>
+    <input type="number" id="totalDays" placeholder="Total Days"><br>
+    <input type="number" id="presentDays" placeholder="Present Days"><br>
+
+    <button onclick="checkAttendance()">Check</button>
+
+    <p id="result"></p>
+</div>
+
+<script>
+function checkAttendance() {
+    let name = document.getElementById("name").value;
+    let totalDays = document.getElementById("totalDays").value;
+    let presentDays = document.getElementById("presentDays").value;
+
+    let attendance = (presentDays / totalDays) * 100;
+
+    let status = attendance >= 75 ? "Eligible" : "Not Eligible";
+
+    document.getElementById("result").innerHTML =
+        "Name: " + name + "<br>" +
+        "Attendance: " + attendance.toFixed(2) + "%<br>" +
+        "Status: " + status;
+}
+</script>
+
+</body>
+</html>
